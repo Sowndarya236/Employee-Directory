@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Directory</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Employee Directory</h1>
+            <input type="text" id="searchInput" placeholder="Search by name or email" />
+            <button onclick="showForm()">Add Employee</button>
+        </header>
+
+        <div class="controls">
+            <select id="filterDepartment" onchange="applyFilters()">
+                <option value="">All Departments</option>
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="Finance">Finance</option>
+            </select>
+
+            <select id="filterRole" onchange="applyFilters()">
+                <option value="">All Roles</option>
+                <option value="Manager">Manager</option>
+                <option value="Developer">Developer</option>
+                <option value="Accountant">Accountant</option>
+            </select>
+
+            <select id="sortBy" onchange="applyFilters()">
+                <option value="">Sort By</option>
+                <option value="firstName">First Name (A-Z)</option>
+                <option value="department">Department (A-Z)</option>
+            </select>
+        </div>
+
+        <form id="employeeForm" class="hidden" onsubmit="handleFormSubmit(event)">
+            <h2 id="formTitle">Add Employee</h2>
+            <input type="hidden" id="empId" />
+            <input type="text" id="firstName" placeholder="First Name" required />
+            <input type="text" id="lastName" placeholder="Last Name" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="text" id="department" placeholder="Department" required />
+            <input type="text" id="role" placeholder="Role" required />
+            <div class="form-actions">
+                <button type="submit">Save</button>
+                <button type="button" onclick="hideForm()">Cancel</button>
+            </div>
+        </form>
+
+        <div id="employeeList" class="employee-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
